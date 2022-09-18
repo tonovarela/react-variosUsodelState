@@ -4,19 +4,20 @@ export const UserEmptyState = {
   name: '',
   email: ''
 };
-
 export const userSlice = createSlice({
   name: 'user',
-  initialState: UserEmptyState,
+  initialState:{
+    user:UserEmptyState
+  },  
   reducers: {
     createUser: (state, action) => {
-      return action.payload;
+      state.user= action.payload;
     },
-    modifyUser: (state, action) => {
-      return { ...state, ...action.payload };
+    modifyUser: (state, action) => {      
+      state.user= action.payload      
     },
-    resetUser: () => {
-      return UserEmptyState;
+    resetUser: (state,action) => {
+      state.user = UserEmptyState;      
     }
   }
 });
